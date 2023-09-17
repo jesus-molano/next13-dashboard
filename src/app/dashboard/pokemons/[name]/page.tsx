@@ -1,24 +1,24 @@
 import React from 'react'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
-import { getPokemonById } from '@/pokemons'
+import { getPokemonById, getPokemonByName, getPokemons } from '@/pokemons'
 
 interface Props {
   params: {
-    id: string
+    name: string
   }
 }
 
 export const generateStaticParams = async () => {
-  const static1Generation = Array.from({ length: 151 }, (_, i) => i + 1)
-  return static1Generation.map((id) => ({
-    id: id.toString()
+  const static1Generation = await getPokemons(151)
+  return static1Generation.map((pokemon) => ({
+    name: pokemon.name
   }))
 }
 
 export const generateMetadata = async ({ params }: Props) => {
   try {
-    const pokemon = await getPokemonById(params.id)
+    const pokemon = await getPokemonByName(params.name)
     return {
       title: `${pokemon.id}-${pokemon.name}`,
       description: `Pokemon ${pokemon.name} page`,
@@ -33,7 +33,7 @@ export const generateMetadata = async ({ params }: Props) => {
 
 const PokemonPage = async ({ params }: Props) => {
   try {
-    const pokemon = await getPokemonById(params.id)
+    const pokemon = await getPokemonByName(params.name)
     return (
       <div className='flex flex-col justify-center items-center gap-6 p-4'>
         <h1 className='uppercase font-semibold text-2xl' >{pokemon.name}</h1>
