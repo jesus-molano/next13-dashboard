@@ -12,6 +12,7 @@ export const getPokemonById = async (id: string) => {
       name: stat.stat.name,
       value: stat.base_stat,
     })),
+    abilities: data.abilities.map((ability) => ability.ability.name),
   };
   return pokemon;
 }

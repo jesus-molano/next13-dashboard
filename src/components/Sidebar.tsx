@@ -11,7 +11,7 @@ const menuItems = [
     subtitle: 'Data Overview'
   },
   {
-    path: '/dashboard/counter',
+    path: '/dashboard/shopping-cart',
     icon: <IoCartOutline className="w-6 h-6 text-white" />,
     title: 'Shopping Cart',
     subtitle: 'Client Side Component'

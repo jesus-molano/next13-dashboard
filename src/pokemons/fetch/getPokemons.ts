@@ -1,4 +1,4 @@
-import type { PokemonsResponse, SimplePokemon } from "@/app/pokemons"
+import type { PokemonsResponse, SimplePokemon } from "@/pokemons"
 
 const API_URL = 'https://pokeapi.co/api/v2/pokemon'
 
